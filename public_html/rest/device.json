@@ -1,7 +1,7 @@
 {
     "items":[
         {
-            "id":201,
+            "devId":201,
             "name":"торшер",
             "currentValue":0,
             "x":0,
@@ -9,14 +9,7 @@
             "devType":"light"
         },
         {
-            "id":202,
-            "name":"Проигрыватель",
-            "x":0,
-            "y":25,
-            "devType":"player"
-        },
-        {
-            "id":203,
+            "devId":203,
             "name":"Настольная лампа",
             "currentValue":1,
             "x":25,
@@ -24,7 +17,7 @@
             "devType":"light"
         },
         {
-            "id":204,
+            "devId":204,
             "name":"не выключать",
             "currentValue":1,
             "x":200,
@@ -33,7 +26,7 @@
             "readOnly":"true"
         },
         {
-            "id":205,
+            "devId":205,
             "name":"Освещенность",
             "currentValue":145,
             "x":150,

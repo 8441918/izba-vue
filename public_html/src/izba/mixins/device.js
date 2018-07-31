@@ -20,10 +20,6 @@ export default {
             readOnly:{
                 type: Boolean,
                 default:false
-            },
-            iconRow:{
-                type: Boolean,
-                default:0
             }
         },
         data:function(){
@@ -37,16 +33,6 @@ export default {
         methods:{
             afterRefresh:function(){
             
-            },
-            click:function(){
-                if (this.readOnly){
-                    return;
-                }
-                if (this.clickAction())
-                    this.sentValue();
-            },
-            clickAction: function(){
-                return false;
             },
             refresh:function(){
                 this.afterRefresh();

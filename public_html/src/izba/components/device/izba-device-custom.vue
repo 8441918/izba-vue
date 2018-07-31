@@ -37,4 +37,11 @@
         height:50px;
         z-index: 1000;
     }
+    .izba-device-container{
+        position:absolute;
+        top:0px;
+        left:0px;
+        width:100%;
+        height:100%;
+    }
 </style>

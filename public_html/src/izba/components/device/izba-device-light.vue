@@ -9,15 +9,18 @@
         components: {
         },
         methods:{
-            clickAction:function(){
+            click:function(){
+                if (this.readOnly){
+                    return;
+                }
                 this.currentValue = ((this.currentValue > 0)?0:1);
-                return true;
+                this.sentValue();
             }
         },
         computed:{
             getStyle:function(){
                 var border = {
-                    'background-position': ((this.currentValue>0)?0:-35) + 'px ' + this.iconRow + 'px'
+                    'background-position': ((this.currentValue>0)?0:-35) + 'px 0px'
                 };
                 return border;
             }
