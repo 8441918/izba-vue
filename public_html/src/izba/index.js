@@ -17,8 +17,10 @@ const IzbaPlugin = {
         
         
         var url = function(cmd){
+            var d = new Date();
             var path = ((options !== undefined && options.izbaServer !== undefined)?options.izbaServer:'rest/')+ cmd;
             path += '?roomid=' + roomId;
+            path += '&msec=' + d.getTime();
             return path;
         };
         

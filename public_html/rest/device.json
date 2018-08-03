@@ -11,7 +11,7 @@
         {
             "devId":202,
             "name":"градусник",
-            "currentValue":35,
+            "currentValue":-35,
             "x":200,
             "y":150,
             "devType":"term"

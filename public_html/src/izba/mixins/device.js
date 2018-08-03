@@ -6,8 +6,9 @@
 export default {
     devTypes:{
         'display':{
-            ratioX:2,
-            iconRow:0
+            ratioX:2,   //ширина элемента
+            iconRow:0  //строка набора иконок 
+            
         },
         'light':{
             ratioX:1,
@@ -20,6 +21,7 @@ export default {
         'term':{
             ratioX:2,
             iconRow:3
+            
         }
     },
     props:{
