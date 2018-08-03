@@ -39,11 +39,10 @@
 <script>
     import VDR from 'vue-draggable-resizable'
     import deviceMixin from '../../mixins/device.js'
-    import deviceRectMixin from '../../mixins/device-rect.js'   
     import dragDeveMixin from '../../mixins/dragmode.js'
     
     export default {
-        mixins:[deviceMixin, deviceRectMixin, dragDeveMixin],    
+        mixins:[deviceMixin, dragDeveMixin],    
         components: {
             'vue-draggable-resizable':VDR
         },

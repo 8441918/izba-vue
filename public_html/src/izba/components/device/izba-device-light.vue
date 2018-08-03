@@ -20,7 +20,7 @@
         computed:{
             getStyle:function(){
                 var border = {
-                    'background-position': ((this.currentValue>0)?0:-35) + 'px 0px'
+                    'background-position': ((this.currentValue>0)?0:-35) + 'px ' + this.bgY+ 'px'
                 };
                 return border;
             }

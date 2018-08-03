@@ -1,32 +1,40 @@
 <template>
     <izba-drag-dev 
-        :x="x" :y="y" :w="width" :h="50" :name="name">
+        :x="x" :y="y" :w="width" :h="height" :name="name">
         <izba-device-custom :params="propsObject"></izba-device-custom>
     </izba-drag-dev>
 </template>
 
 <script>
     
-    function ratio(type){
-        if (type === 'term')
-            return 2;
-        return 1;
-    }
-    
     import deviceMixin from '../../mixins/device.js'
-    import deviceRectMixin from '../../mixins/device-rect.js'    
     import dragMixin from '../../mixins/dragmode.js'    
     import cmpDragDev from './izba-drag-dev.vue'
     import cmpDevCustom from './izba-device-custom.vue'
+    
+    const devInfo = function(type){
+        var d = deviceMixin.devTypes[type];
+        if (d===undefined)
+            d = {
+                ratioX:1,
+                iconRow:0
+            };
+        console.log (type, d);
+        return d;
+    };
+    console.log (deviceMixin.devTypes);
     export default {
-        mixins:[deviceMixin, deviceRectMixin, dragMixin], 
+        mixins:[deviceMixin, dragMixin], 
         components: {
             'izba-drag-dev':cmpDragDev,
             'izba-device-custom':cmpDevCustom
         },
         data:function(){
+            var di = devInfo(this.devType);
             return{
-                width:35*ratio(this.devType)
+                width:35*di.ratioX,
+                height:50,
+                icnRow:di.iconRow
             };
         },
         computed:{
@@ -35,14 +43,14 @@
                     x: this.x,
                     y: this.y,
                     w: this.width,
-                    h: this.h,
+                    h: this.height,
                     devId:this.devId,
                     currentValue:this.currentValue,
                     name:this.name,
                     readOnly:((this.dragMode)?true:this.readOnly),
-                    devType:this.devType
+                    devType:this.devType,
+                    iconRow:this.icnRow
                 };
-                console.log (o);
                 return o;
             }
         }
