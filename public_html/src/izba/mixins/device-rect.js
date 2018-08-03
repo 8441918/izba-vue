@@ -23,7 +23,7 @@ export default {
             type:String,
             default:'display',
             validator:function(val){
-                return ['display', 'light', 'player'].indexOf(val) !== -1;
+                return ['display', 'light', 'player', 'term'].indexOf(val) !== -1;
             }
         }
     }

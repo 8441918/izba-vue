@@ -1,11 +1,18 @@
 <template>
     <izba-drag-dev 
-        :x="x" :y="y" :w="35" :h="50" :name="name">
+        :x="x" :y="y" :w="width" :h="50" :name="name">
         <izba-device-custom :params="propsObject"></izba-device-custom>
     </izba-drag-dev>
 </template>
 
 <script>
+    
+    function ratio(type){
+        if (type === 'term')
+            return 2;
+        return 1;
+    }
+    
     import deviceMixin from '../../mixins/device.js'
     import deviceRectMixin from '../../mixins/device-rect.js'    
     import dragMixin from '../../mixins/dragmode.js'    
@@ -17,14 +24,17 @@
             'izba-drag-dev':cmpDragDev,
             'izba-device-custom':cmpDevCustom
         },
-        methods:{
+        data:function(){
+            return{
+                width:35*ratio(this.devType)
+            };
         },
         computed:{
             propsObject:function(){
                 var o={
                     x: this.x,
                     y: this.y,
-                    w: this.w,
+                    w: this.width,
                     h: this.h,
                     devId:this.devId,
                     currentValue:this.currentValue,

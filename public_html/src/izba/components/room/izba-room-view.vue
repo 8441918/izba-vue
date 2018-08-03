@@ -15,15 +15,7 @@
         data:function(){
             return{
                 refreshCmd:'device.json',
-                currentRoom:{id:0, image:'undefined.jpg'},
-                samplePrm:{
-                    "devId":201,
-                    "name":"торшер",
-                    "currentValue":0,
-                    "x":0,
-                    "y":0,
-                    "type":"light"
-                }
+                currentRoom:{id:0, image:'undefined.jpg'}
             };
         },//data
         computed:{

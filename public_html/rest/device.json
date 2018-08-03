@@ -9,6 +9,14 @@
             "devType":"light"
         },
         {
+            "devId":202,
+            "name":"градусник",
+            "currentValue":35,
+            "x":200,
+            "y":150,
+            "devType":"term"
+        },
+        {
             "devId":203,
             "name":"Настольная лампа",
             "currentValue":1,
