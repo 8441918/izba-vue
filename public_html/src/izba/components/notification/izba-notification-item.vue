@@ -1,6 +1,7 @@
 <template>
         <b-alert
             class="izba-notification-item"
+            fade
             dismissible
             :show="visible"
             @dismissed="dismissed()">
@@ -35,5 +36,5 @@
     .izba-notification-item{
         box-shadow: rgba(0,0,0,.9) 3px 3px 5px;
         opacity: 0.7;
-    }    
+    } 
 </style>

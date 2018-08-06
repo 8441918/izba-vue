@@ -1,14 +1,13 @@
 <template>
-    <!--<div class="izba-device" :style="getStyle">
-        <div class="temperature-value">
-            {{currentValue}} &#176;C
-        </div>
-            
-    </div-->
     <izba-popup-panel title="Термостат"  :iconRow="icnRow" :shiftIconX="icnX">
-         <div slot="data" class="temperature-value">
+        <div slot="data" class="temperature-value">
             {{currentValue}} &#176;C
         </div>
+        <h1 slot="popup">
+            <b-button @click="changeThresh(false)">-</b-button>
+            <b-badge>{{threshVal}}</b-badge>
+            <b-button @click="changeThresh(true)">+</b-button>
+        </h1>
     </izba-popup-panel>
 </template>
 
@@ -26,7 +25,31 @@
             },
             icnX:function(){
                 return ((this.currentValue>0)?0:-this.w);
+            },
+            threshVal:function(){
+                if (this.readOnly)
+                    return 0;
+                return this.thresh + 23;
             }
+        },
+        methods:{
+            changeThresh:function(up){
+                if (up){
+                    if (this.thresh < 10)
+                        this.thresh++;
+                }
+                else{
+                    console.log ('minus');
+                    if (this.thresh > -10)
+                        this.thresh--;
+                }
+                return this.thresh;;
+            }
+        },
+        data:function(){
+            return{
+                thresh:0
+            };
         }
     }
 </script>
