@@ -3,10 +3,11 @@
             :style="getStyle"
             >
             <div :id="'popower-'+id">&nbsp;</div>
+            <slot name="data"></slot>
             <b-popover :show.sync="show" :target="'popower-'+id" 
                 placement='bottom'
                 :title="title">
-                <slot></slot>
+                <slot name="popup"></slot>
             </b-popover>
         </div>
 </template>
@@ -19,6 +20,10 @@
             title:{
                 type:String,
                 default:''
+            },
+            shiftIconX:{
+                type:Number,
+                default:0
             }
         },
         components: {
@@ -38,7 +43,7 @@
         computed:{
             getStyle:function(){
                 var border = {
-                    'background-position': ((this.currentValue>0)?0:-35) + 'px -50px'
+                    'background-position': this.shiftIconX + 'px ' + this.bgY + 'px'
                 };
                 return border;
             }

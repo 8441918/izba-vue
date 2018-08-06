@@ -2,8 +2,9 @@
     <div class="izba-notification">
         <izba-notification-item 
             v-for="(itm,  index) in list"
-            :devId="index"
+            :devId="itm.id"
             :key="index"
+            :name="itm.name"
         >
         </izba-notification-item>
     </div>
