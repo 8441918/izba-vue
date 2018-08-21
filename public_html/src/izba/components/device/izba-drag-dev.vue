@@ -20,7 +20,7 @@
                 <slot></slot>
                 <b-tooltip :target="id"  placement="top">
                     {{name}}
-                    <p v-if="dragMode">
+                    <p>
                         X: {{ currentX }} / Y: {{ currentY }}
                     </p>
                 </b-tooltip>

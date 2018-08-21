@@ -3,6 +3,13 @@
  */
 
 
+/**
+ * Устройство может быть составным
+ * В этом случае devId должен быть объектом, содержащим название и номером порта.
+ * При этом currentValue так же должно быть объектом с такими же названиями 
+ * устройства и значением для этого устройства. 
+ */
+
 export default {
     devTypes:{
         'display':{
@@ -18,6 +25,10 @@ export default {
             ratioX:1,
             iconRow:2
         }, 
+        'rgb':{
+            ratioX:1,
+            iconRow:0
+        },
         'term':{
             ratioX:2,
             iconRow:3
@@ -26,11 +37,11 @@ export default {
     },
     props:{
         devId:{
-            type: Number,
+            type: [Number,Object],
             default:0
         },
         currentValue:{
-            type: Number,
+            type: [Number,Object],
             default:-1
         },
         name:{
@@ -82,12 +93,19 @@ export default {
         refresh:function(){
             this.afterRefresh();
         },
+        _sentValue (dev, val){
+            console.log('Device: ', dev, ' sentValue:', val);
+        },
         sentValue:function(val){
             if (this.readOnly)
                 return;
             if (val===undefined)
                 val = this.currentValue;
-            console.log('Device: ', this.devId, ' sentValue:', val);
+            if (this.devId instanceof Object){
+                for (let id in this.devId)
+                    this._sentValue(this.devId[id], val[id]);
+            }else
+                this._sentValue(this.devId, val);
         }
     }
 }

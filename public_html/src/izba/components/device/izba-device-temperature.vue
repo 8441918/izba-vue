@@ -1,5 +1,5 @@
 <template>
-    <izba-popup-panel title="Термостат"  :iconRow="icnRow" :shiftIconX="icnX">
+    <izba-popup-panel title="Термостат"  :iconRow="iconRow" :shiftIconX="icnX">
         <div slot="data" class="temperature-value">
             {{currentValue}} &#176;C
         </div>
@@ -20,9 +20,6 @@
             'izba-popup-panel':cmpPopUp
         },
         computed:{
-            icnRow:function(){
-                return this.iconRow;
-            },
             icnX:function(){
                 return ((this.currentValue>0)?0:-this.w);
             },

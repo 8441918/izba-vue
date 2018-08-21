@@ -22,7 +22,6 @@
         console.log (type, d);
         return d;
     };
-    console.log (deviceMixin.devTypes);
     export default {
         mixins:[deviceMixin, dragMixin], 
         components: {

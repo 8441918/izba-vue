@@ -1,6 +1,18 @@
 {
     "items":[
         {
+            "devId":{
+                "r":200,
+                "g":250,
+                "b":300
+            },
+            "name":"rgb-лента",
+            "currentValue":{"r":102,"g":150, "b":170},
+            "x":200,
+            "y":0,
+            "devType":"rgb"
+        },
+        {
             "devId":201,
             "name":"торшер",
             "currentValue":0,

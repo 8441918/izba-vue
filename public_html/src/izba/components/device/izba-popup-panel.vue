@@ -4,11 +4,14 @@
             >
             <div :id="'popower-'+id">&nbsp;</div>
             <slot name="data"></slot>
-            <b-popover :show.sync="show" :target="'popower-'+id" 
+            <b-popover v-if="!modal" :show.sync="show" :target="'popower-'+id" 
                 placement='bottom'
                 :title="title">
                 <slot name="popup"></slot>
             </b-popover>
+            <b-modal v-if="modal" v-model="show">
+                <slot name="popup"></slot>
+            </b-modal>
         </div>
 </template>
 
@@ -24,6 +27,10 @@
             shiftIconX:{
                 type:Number,
                 default:0
+            },
+            modal:{
+                type:Boolean,
+                default:false
             }
         },
         components: {
@@ -34,6 +41,7 @@
                 return true;
             },
             showPopOver:function(){
+                console.log (this.title);
                 if (!this.readOnly){
                     this.show=!this.show;
                     this.$emit('onShow', this.show);
