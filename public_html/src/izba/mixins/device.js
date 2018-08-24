@@ -17,6 +17,10 @@ export default {
             iconRow:0  //строка набора иконок 
             
         },
+        'job':{
+            ratioX:1,
+            iconRow:1
+        },
         'light':{
             ratioX:1,
             iconRow:1

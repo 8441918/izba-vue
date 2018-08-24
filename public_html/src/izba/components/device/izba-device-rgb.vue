@@ -1,5 +1,5 @@
 <template>
-     <izba-popup-panel title="RGB-лента" :iconRow="iconRow">
+     <izba-popup-panel title="RGB-лента" :iconRow="iconRow" :readOnly="readOnly">
         <div slot="data" class="rgb-display" :style="getColor">
         </div>
         <div slot="popup">

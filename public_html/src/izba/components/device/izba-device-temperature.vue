@@ -1,5 +1,5 @@
 <template>
-    <izba-popup-panel title="Термостат"  :iconRow="iconRow" :shiftIconX="icnX">
+    <izba-popup-panel title="Термостат"  :iconRow="iconRow" :shiftIconX="icnX" :readOnly="readOnly">
         <div slot="data" class="temperature-value">
             {{currentValue}} &#176;C
         </div>

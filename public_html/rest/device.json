@@ -1,6 +1,14 @@
 {
     "items":[
         {
+            "devId":401,
+            "name":"управление протечкой",
+            "currentValue":0,
+            "x":0,
+            "y":70,
+            "devType":"job"
+        },
+        {
             "devId":{
                 "r":200,
                 "g":250,

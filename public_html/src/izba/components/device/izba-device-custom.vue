@@ -1,13 +1,17 @@
 <template>
     <div class="izba-device-container">
-        <izba-device-light v-if="params.devType==='light'" v-bind="params"></izba-device-light>
-        <izba-device-player v-if="params.devType==='player'" v-bind="params"></izba-device-player>
-        <izba-device-rgb v-if="params.devType==='rgb'" v-bind="params"></izba-device-rgb>
-        <izba-device-temperature v-if="params.devType==='term'" v-bind="params"></izba-device-temperature>
+        <izba-device-job v-if="params.devType==='job'" v-bind="params"></izba-device-job>
+        <izba-device-light v-else-if="params.devType==='light'" v-bind="params"></izba-device-light>
+        <izba-device-player v-else-if="params.devType==='player'" v-bind="params"></izba-device-player>
+        <izba-device-rgb v-else-if="params.devType==='rgb'" v-bind="params"></izba-device-rgb>
+        <izba-device-temperature v-else-if="params.devType==='term'" v-bind="params"></izba-device-temperature>
+        <izba-device-empty v-else v-bind="params"></izba-device-empty>
     </div>
 </template>
 
 <script>
+    import cmpEmpty from './izba-device-empty.vue'
+    import cmpJob from './izba-device-job.vue'
     import cmpLight from './izba-device-light.vue'
     import cmpPlayer from './izba-device-player.vue'
     import cmpRgb from './izba-device-rgb.vue'
@@ -21,6 +25,8 @@
             }
         },
         components: {
+            'izba-device-empty':cmpEmpty,
+            'izba-device-job':cmpJob,
             'izba-device-light':cmpLight,
             'izba-device-player':cmpPlayer,
             'izba-device-rgb':cmpRgb,

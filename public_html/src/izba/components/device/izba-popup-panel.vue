@@ -41,11 +41,10 @@
                 return true;
             },
             showPopOver:function(){
-                console.log (this.title);
-                if (!this.readOnly){
-                    this.show=!this.show;
-                    this.$emit('onShow', this.show);
-                }
+                if (this.readOnly)
+                    return;
+                this.show=!this.show;
+                this.$emit('onShow', this.show);
             }
         },
         computed:{
