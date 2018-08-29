@@ -19,7 +19,7 @@ export default {
         },
         'job':{
             ratioX:1,
-            iconRow:1
+            iconRow:4
         },
         'light':{
             ratioX:1,
