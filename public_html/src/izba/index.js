@@ -1,14 +1,17 @@
 import axios from 'axios'
 import * as components from './components'
+import IzbaUrl from './utils/izba-url'
+
 
 const IzbaPlugin = {
     install:function(Vue, options){
+        var urlObj = IzbaUrl();
         if (Vue.Izba !== undefined)
             return;
-        var roomId = 0;
+        var roomId = ((urlObj.url.params['roomid']!==undefined)?urlObj.url.params['roomid']:0);
         var bus = new Vue({});
         bus.$on('selectRoom', (room)=>{
-            roomId = room.id;
+            roomId = room.room.id;
         });
         //регистрация компонентов
         for (let plugin in components){
@@ -25,6 +28,10 @@ const IzbaPlugin = {
         };
         
         Vue.prototype.$Izba = {
+            currentRoom:{
+                id:roomId,
+                url:urlObj.build([{name:'roomid', value:roomId}])
+            },
             easyGet:function (cmd){
                 return new Promise((resolve, reject)=>{
                     axios.get(url(cmd))
