@@ -1,6 +1,6 @@
 <template>
     <izba-drag-dev 
-        :x="x" :y="y" :w="width" :h="height" :name="name">
+        :x="x" :y="y" :w="width" :h="height" :name="name" :draggable="draggable">
         <izba-device-custom :params="propsObject"></izba-device-custom>
     </izba-drag-dev>
 </template>
@@ -38,12 +38,14 @@
         },
         computed:{
             propsObject:function(){
+                console.log (this.name, 'draggable:',this.drag);
                 var o={
                     x: this.x,
                     y: this.y,
                     w: this.width,
                     h: this.height,
                     devId:this.devId,
+                    draggable:this.draggable,
                     currentValue:this.currentValue,
                     name:this.name,
                     readOnly:((this.dragMode)?true:this.readOnly),

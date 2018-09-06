@@ -7,7 +7,7 @@
     -->
     <div :style="getContainerStyle" :id="'container-'+id">
         <vue-draggable-resizable 
-            v-if="dragMode"
+            v-if="getDragMode"
             :id="id"
             :w="w" :h="h" :minw="10" :minh="10"
             :x="currentX" :y="currentY"
@@ -54,14 +54,17 @@
             };
         },//data
         computed:{
+            getDragMode:function(){
+                return this.dragMode && this.draggable;
+            },
             getStyle:function(){
                 var border = {
-                    border:((this.dragMode)?'1px solid':'0px')
+                    border:((this.getDragMode)?'1px solid':'0px')
                 };
                 return border;
             },
             getContainerStyle:function(){
-                if (this.dragMode)
+                if (this.getDragMode)
                     return{
                         position:'absolute',
                         top:'0px',

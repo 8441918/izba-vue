@@ -6,7 +6,8 @@
             "currentValue":0,
             "x":0,
             "y":70,
-            "devType":"job"
+            "devType":"job",
+            "draggable":false
         },
         {
             "devId":{

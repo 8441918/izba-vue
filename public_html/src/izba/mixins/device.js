@@ -79,6 +79,10 @@ export default {
         devType:{
             type:String,
             default:'display'
+        },
+        draggable:{
+            type:Boolean,
+            default: true
         }
             
     },

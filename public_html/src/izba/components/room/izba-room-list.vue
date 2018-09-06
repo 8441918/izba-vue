@@ -9,7 +9,7 @@
                         {{itm.name}}
                     </b-btn>
                 </b-card-header>
-                <b-collapse v-bind:id="'floor-'+itm.id" accordion="my-accordion" role="tabpanel" v-model="showCollapse">
+                <b-collapse v-bind:id="'floor-'+itm.id" accordion="my-accordion" role="tabpanel">
                     <b-card-body>
                         <b-button block v-for="(room, roomIdx) in itm.room"
                             :variant="activeRoom.id==room.id?'primary':'secondary'"
