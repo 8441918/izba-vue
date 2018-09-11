@@ -3,49 +3,41 @@
         <div slot="data" class="temperature-value">
             {{currentValue}} &#176;C
         </div>
-        <h1 slot="popup">
-            <b-button @click="changeThresh(false)">-</b-button>
-            <b-badge>{{threshVal}}</b-badge>
-            <b-button @click="changeThresh(true)">+</b-button>
-        </h1>
+        <div slot="popup">
+            <izba-range 
+                speedButton="2"
+                initValue="23" minValue="13" maxValue="33" 
+                delta="-10"
+                @onChange="onChange">
+            </izba-range>
+        </div>
     </izba-popup-panel>
 </template>
 
 <script>
     import deviceMixin from '../../mixins/device.js'
     import cmpPopUp from './izba-popup-panel.vue'
+    
+    import cmpRange from './izba-range.vue'
+    
     export default {
         mixins:[deviceMixin],
         components: {
-            'izba-popup-panel':cmpPopUp
+            'izba-popup-panel':cmpPopUp,
+            'izba-range':cmpRange
         },
         computed:{
             icnX:function(){
                 return ((this.currentValue>0)?0:-this.w);
-            },
-            threshVal:function(){
-                if (this.readOnly)
-                    return 0;
-                return this.thresh + 23;
             }
         },
         methods:{
-            changeThresh:function(up){
-                if (up){
-                    if (this.thresh < 10)
-                        this.thresh++;
-                }
-                else{
-                    console.log ('minus');
-                    if (this.thresh > -10)
-                        this.thresh--;
-                }
-                return this.thresh;;
+            onChange:function(v,d){
+                console.log (v,d);
             }
         },
         data:function(){
             return{
-                thresh:0
             };
         }
     }
