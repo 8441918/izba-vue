@@ -1,5 +1,5 @@
 <template>
-        <div class="izba-device" @click="showPopOver" 
+        <div class="izba-device" @click.stop="showPopOver" 
             :style="getStyle"
             >
             <div :id="'popower-'+id">&nbsp;</div>
@@ -59,6 +59,17 @@
             return{
                 show:false
             };
+        },
+        beforeDestroy:function(){
+            this._onClickRoomView && this.$Izba.getBus().$off('clickRoomView', this._onClickRoomView);
+        },
+        mounted:function(){
+            this._onClickRoomView = ()=>{
+                if (!this.modal)
+                    this.show = false;
+                    this.$emit('onShow', this.show);
+            };
+            this.$Izba.getBus().$on('clickRoomView', this._onClickRoomView);
         }
     }
 </script>

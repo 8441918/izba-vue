@@ -1,5 +1,5 @@
 <template>
-    <div  :style="bgStyle" class="izba-room-view">
+    <div  :style="bgStyle" class="izba-room-view" @click="onClick">
         <izba-device v-for="(itm, index) in list" :key="index" v-bind="itm"></izba-device>
     </div>
 </template>
@@ -39,6 +39,12 @@
                 this.refresh();
             };
             this.$Izba.getBus().$on('selectRoom', this._onSelectRoom);
+        },
+        methods:{
+            onClick:function(){
+                console.log ('roomView click');
+                this.$Izba.getBus().$emit('clickRoomView');
+            }
         }
     };
 </script>
