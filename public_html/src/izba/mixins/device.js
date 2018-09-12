@@ -12,6 +12,10 @@
 
 export default {
     devTypes:{
+        'dimer':{
+            ratioX:1,
+            iconRow:0
+        },
         'display':{
             ratioX:2,   //ширина элемента
             iconRow:0  //строка набора иконок 

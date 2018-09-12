@@ -5,11 +5,14 @@
         <izba-device-player v-else-if="params.devType==='player'" v-bind="params"></izba-device-player>
         <izba-device-rgb v-else-if="params.devType==='rgb'" v-bind="params"></izba-device-rgb>
         <izba-device-temperature v-else-if="params.devType==='term'" v-bind="params"></izba-device-temperature>
+        <izba-device-dimer v-else-if="params.devType==='dimer'" v-bind="params"></izba-device-dimer>
         <izba-device-empty v-else v-bind="params"></izba-device-empty>
+        
     </div>
 </template>
 
 <script>
+    import cmpDimer from './izba-device-dimer.vue'
     import cmpEmpty from './izba-device-empty.vue'
     import cmpJob from './izba-device-job.vue'
     import cmpLight from './izba-device-light.vue'
@@ -25,6 +28,7 @@
             }
         },
         components: {
+            'izba-device-dimer':cmpDimer,
             'izba-device-empty':cmpEmpty,
             'izba-device-job':cmpJob,
             'izba-device-light':cmpLight,

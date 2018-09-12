@@ -5,7 +5,7 @@
         <div slot="popup">
             <ul>
                 <li v-for="(itm,  index) in list"
-                    class="rgbItem"
+                    class="rgb-item"
                     :key="index"
                     :style="getColorItem(itm)"
                     @click="changeValue(itm)"
@@ -19,13 +19,7 @@
 </template>
 
 <script>
-    var v =(x)=>(x===undefined)?0:x;
-    var style=(c)=>{
-        return{
-            'background-color':'RGB(' + v(c.r) + ','+ v(c.g)+','+ v(c.b)+ ')',
-            'color':'RGB(' + (255-v(c.r)) + ','+ (255-v(c.g))+','+ (255-v(c.b))+ ')'
-        };
-    };
+    import clr from './izba-color-tool.js'
     import deviceMixin from '../../mixins/device.js'
     import listMixin from '../../mixins/list.js'
     import cmpPopUp from './izba-popup-panel.vue'
@@ -39,7 +33,7 @@
                 
             },
             getColor:function(){
-                return style(this.currentValue);
+                return clr.style(this.currentValue);
             }
            
         },
@@ -67,48 +61,18 @@
             },
             getColorItem:function(vv){
                 var val = (vv===undefined)?this.currentValue:vv;
-                return style(val);
+                return clr.style(val);
             }
         },
         data:function(){
             return{
-                refreshCmd:'rgbpreset.json',
-                itemIndex:0,
-                cValue:{
-                    r:v(this.currentValue.r),
-                    g:v(this.currentValue.g),
-                    b:v(this.currentValue.b)        
-                }
+                refreshCmd:'rgbpreset.json'
             };
         }
     }
 </script>
-
-<style scoped>
-    .rgb-display{
-        position:absolute;
-        right: 0px;
-        top:0px;
-        width:100%;
-        height:100%;
-        border-radius: 100px;
-        background-color: black;
-        border: 1px solid black;
-        box-shadow: rgba(0,0,0,.9) 3px 3px 5px;
-    }
-    .rgbItem{
-        border: 1px solid black;
-        border-radius: 100px;
-        display: inline-block;
-        margin-right: 5px;
-        padding: 3px; 
-        overflow: hidden; 
-        text-overflow: ellipsis; 
-        text-align: center;
-        vertical-align: middle;
-        width: 32px;
-        height: 32px;
-    }
+<style scoped lang="scss">
+    @import './izba-color-style.scss';
 </style>
-    
+   
 
