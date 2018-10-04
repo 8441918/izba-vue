@@ -2,6 +2,9 @@
     <div id="app">
         <b-container>
             <b-row>
+                <img src="./assets/izba-logo.png">
+            </b-row>
+            <b-row>
                 <b-col sm="*">
                     <div class="mediumFrame">
                         <izba-room-list></izba-room-list>

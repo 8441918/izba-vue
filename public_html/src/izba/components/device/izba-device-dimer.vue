@@ -4,7 +4,12 @@
             <p>{{currentValue}}</p>
         </div>
         <div slot="popup">
-            bla-bla-bla
+            <izba-range 
+                speedButton="2"
+                :initValue="currentValue" minValue="0" maxValue="255" 
+                delta="0"
+                @onChange="onChange">
+            </izba-range>
             
         </div>
     </izba-popup-panel>
@@ -12,13 +17,15 @@
 
 <script>
     import cmpPopUp from './izba-popup-panel.vue'
+    import cmpRange from './izba-range.vue'
     import clr from './izba-color-tool.js'
     import deviceMixin from '../../mixins/device.js'
     
     export default {
         mixins:[deviceMixin],
         components: {
-            'izba-popup-panel':cmpPopUp
+            'izba-popup-panel':cmpPopUp,
+            'izba-range':cmpRange
         },
         computed:{
             getColor:function(){
@@ -28,6 +35,9 @@
            
         },
         methods:{
+            onChange:function(v){
+                this.currentValue=v;
+            }
         }
     }
     
